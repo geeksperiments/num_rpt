@@ -1,0 +1,22 @@
+# Environment variable files
+.env
+.env.*
+!.env.example
+
+# Fresh build directory
+_fresh/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Editor directories
+.idea/
+*.sw?
