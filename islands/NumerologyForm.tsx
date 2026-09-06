@@ -382,137 +382,296 @@ export default function NumerologyForm() {
             <div class="space-y-6">
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {/* 1. Life Path */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-md">
-                      Life Purpose
-                    </span>
-                    <span class="text-3xl font-black text-indigo-600">
-                      {profile.lifePath.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow relative overflow-hidden flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-1 rounded-md">
+                        Life Purpose
+                      </span>
+                      <span class="text-3xl font-black text-indigo-600">
+                        {profile.lifePath.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Life Path Number
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      What you are naturally gifted at and your central
+                      trajectory.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[String(profile.lifePath.value)]
+                        ?.["Good Description"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Life Path Number
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    What you are naturally gifted at and your central
-                    trajectory.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.lifePath.value)]
-                      ?.["Good Description"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-indigo-600 hover:text-indigo-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* 2. Personality Number */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-50 px-2.5 py-1 rounded-md">
-                      Character
-                    </span>
-                    <span class="text-3xl font-black text-purple-600">
-                      {profile.personality.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-purple-600 uppercase tracking-wider bg-purple-50 px-2.5 py-1 rounded-md">
+                        Character
+                      </span>
+                      <span class="text-3xl font-black text-purple-600">
+                        {profile.personality.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Personality Number
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      Derived from your birth day; who you are as an individual.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[String(profile.personality.value)]
+                        ?.["Good Description"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Personality Number
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    Derived from your birth day; who you are as an individual.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.personality.value)]
-                      ?.["Good Description"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-purple-600 hover:text-purple-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* 3. Destiny / Expression */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-cyan-600 uppercase tracking-wider bg-cyan-50 px-2.5 py-1 rounded-md">
-                      Destiny / Expression
-                    </span>
-                    <span class="text-3xl font-black text-cyan-600">
-                      {profile.destiny.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-cyan-600 uppercase tracking-wider bg-cyan-50 px-2.5 py-1 rounded-md">
+                        Destiny / Expression
+                      </span>
+                      <span class="text-3xl font-black text-cyan-600">
+                        {profile.destiny.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Destiny Number
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      What you are destined to learn and master in this
+                      lifetime.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[String(profile.destiny.value)]
+                        ?.["Good Description"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Destiny Number
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    What you are destined to learn and master in this lifetime.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.destiny.value)]
-                      ?.["Good Description"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-cyan-600 hover:text-cyan-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* 4. Soul Desire */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-2.5 py-1 rounded-md">
-                      Soul Desire (Vowels)
-                    </span>
-                    <span class="text-3xl font-black text-rose-600">
-                      {profile.soulDesire.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-rose-600 uppercase tracking-wider bg-rose-50 px-2.5 py-1 rounded-md">
+                        Soul Desire (Vowels)
+                      </span>
+                      <span class="text-3xl font-black text-rose-600">
+                        {profile.soulDesire.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Soul Desire Number
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      Your inner self and heart's deepest spiritual longings.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[String(profile.soulDesire.value)]
+                        ?.["Soul Desire"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Soul Desire Number
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    Your inner self and heart's deepest spiritual longings.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.soulDesire.value)]
-                      ?.["Soul Desire"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-rose-600 hover:text-rose-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* 5. Outer Personality */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-2.5 py-1 rounded-md">
-                      Outer (Consonants)
-                    </span>
-                    <span class="text-3xl font-black text-amber-600">
-                      {profile.outerPersonality.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-amber-600 uppercase tracking-wider bg-amber-50 px-2.5 py-1 rounded-md">
+                        Outer (Consonants)
+                      </span>
+                      <span class="text-3xl font-black text-amber-600">
+                        {profile.outerPersonality.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Outer Personality
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      How you wish to be perceived and seen by the world.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[
+                        String(profile.outerPersonality.value)
+                      ]
+                        ?.["Good Description"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Outer Personality
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    How you wish to be perceived and seen by the world.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.outerPersonality.value)]
-                      ?.["Good Description"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-amber-600 hover:text-amber-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 {/* 6. Personal Year */}
-                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-                  <div class="flex items-start justify-between mb-3">
-                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md">
-                      Cycle ({profile.targetYear})
-                    </span>
-                    <span class="text-3xl font-black text-emerald-600">
-                      {profile.personalYear.formatted}
-                    </span>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow flex flex-col justify-between h-full">
+                  <div>
+                    <div class="flex items-start justify-between mb-3">
+                      <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider bg-emerald-50 px-2.5 py-1 rounded-md">
+                        Cycle ({profile.targetYear})
+                      </span>
+                      <span class="text-3xl font-black text-emerald-600">
+                        {profile.personalYear.formatted}
+                      </span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-1">
+                      Personal Year {profile.personalYear.formatted}
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">
+                      Vibrational theme and focal lessons for{" "}
+                      {profile.targetYear}.
+                    </p>
+                    <div class="text-xs leading-relaxed text-gray-700 bg-gray-50/90 p-3.5 rounded-xl border border-gray-100/80">
+                      {numbersDescription[String(profile.personalYear.value)]
+                        ?.["Lessons"]}
+                    </div>
                   </div>
-                  <h3 class="text-lg font-bold text-gray-900 mb-1">
-                    Personal Year {profile.personalYear.formatted}
-                  </h3>
-                  <p class="text-xs text-gray-500 mb-3">
-                    Vibrational theme and focal lessons for{" "}
-                    {profile.targetYear}.
-                  </p>
-                  <div class="text-xs text-gray-700 bg-gray-50 p-3 rounded-xl line-clamp-3">
-                    {numbersDescription[String(profile.personalYear.value)]
-                      ?.["Lessons"]}
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setActiveTab("details");
+                      document.getElementById("full-interpretations")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    class="mt-4 text-xs font-semibold text-emerald-600 hover:text-emerald-800 inline-flex items-center gap-1 transition-colors cursor-pointer self-start"
+                  >
+                    <span>View full interpretation</span>
+                    <svg
+                      class="w-3.5 h-3.5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
@@ -838,7 +997,10 @@ export default function NumerologyForm() {
           {activeTab === "details" && (
             <div class="space-y-6">
               {/* Detailed Core Sections */}
-              <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-6">
+              <div
+                id="full-interpretations"
+                class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-gray-100 space-y-6"
+              >
                 <h3 class="text-xl font-bold text-gray-900 pb-4 border-b border-gray-100">
                   Comprehensive Number Meanings
                 </h3>
